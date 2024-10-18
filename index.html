@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAISHNAVI TILES PRINT</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Modern No. 20, sans-serif;
+            background-color: #EEEEEE;
+            display: flex;
+            flex-direction: column;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #222831;
+            padding: 20px;
+            text-align: center;
+            animation: slideDown 1s ease-out;
+        }
+        .header h1 {
+            color: #00ADB5;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #393E46;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav a {
+            color: #EEEEEE;
+            text-decoration: none;
+            padding: 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav a:hover {
+            color: #00ADB5;
+            transform: scale(1.1);
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        .search-container input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #00ADB5;
+            border-radius: 4px;
+            background-color: #EEEEEE;
+            color: #222831;
+        }
+        .search-container button {
+            padding: 8px 16px;
+            background-color: #00ADB5;
+            color: #EEEEEE;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: #008B94;
+}
+
+        main {
+            padding: 40px;
+            flex: 1; /* Ensure the main section grows to take up space */
+        }
+        h2 {
+            text-align: center;
+            color: #222831;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .product {
+            width: 24%;
+            margin-bottom: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: slideUp 0.8s forwards;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+            background-color: #EEEEEE;
+        }
+        .product img:hover {
+            transform: scale(1.05);
+        }
+        .product-description {
+            margin-top: 10px;
+            background-color: #393E46;
+            color: #EEEEEE;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .product-price {
+            font-weight: bold;
+            color: #00ADB5;
+        }
+        .contact {
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        a {
+            color: #00ADB5;
+            text-decoration: none;
+        }
+        footer {
+            background-color: #222831;
+            padding: 40px 0;
+            text-align: center;
+            color: #EEEEEE;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer .social-icons {
+            margin-bottom: 20px;
+        }
+        footer .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+            color: #EEEEEE;
+            font-size: 24px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        footer .social-icons a:hover {
+            color: #00ADB5;
+            transform: scale(1.2);
+        }
+        footer p {
+            margin: 0;
+        }
+        footer .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #AAAAAA;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 1200px) {
+            .product {
+                width: 32%; /* Adjust for 3 products per row on medium screens */
+            }
+        }
+        @media (max-width: 900px) {
+            .product {
+                width: 48%; /* Adjust for 2 products per row on tablet and mobile screens */
+            }
+            .nav {
+                flex-direction: column; /* Stack the navbar items vertically */
+            }
+            .search-container {
+                margin-top: 10px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <h1>VAISHNAVI TILES PRINT</h1>
+    </header>
+    <nav class="nav">
+        <div>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search products..." id="searchInput">
+            <button onclick="searchProduct()">Search</button>
+        </div>
+    </nav>
+    <main class="content">
+        <h2>Our Products</h2>
+        <div class="product-container">
+            <!-- 20 Products with small descriptions -->
+            <div class="product" data-product-name="BAL KRISHNA">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqKFZnzy9JkCPjpTdNSldRt11UyopvmkeutQ-aXBo8PEmhI5VUxTZYes3gwMKzyG_KoefnWbjPr2m881Zvx89Ox6Xxs00SvrGcn49ZyqhKqUEwR-siIPHLJ4NIKu5EpU95yFp60rEas-GzYUeZz0lzFrEKMjpGarKLwyWDgC4Dps-t81AR-T5trqphgLVX/s320/green%20laxmi%20with%20elephant%20%2024x24.jpg" alt="Bal Krishna">
+                <div class="product-description">
+                    <h3>BAL KRISHNA</h3>
+                    <p>Beautiful print of Bal Krishna with rich colors.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+            
+            <!-- Repeat the above structure for 19 more products -->
+            <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsXYK9A3zcXuB-Yukvhruj-ZtkZ06IbWaEPm8CXwACf-ARVSloxlcLapPpKjBG6vmpMXhwWIsmcaPlnipqKXTb5De8o4TNej8r2aSmSv2FEPnfJfi_PywB2PBidhUp1dCnG2xIoNqG4PF-SIyC8JYV0BJMI_CgArdiIltmUiC9esq74dPiUpx0mhzI8gcH/s424/vb%2024+24%202.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEivYsj4wrMXklF1nT2v7C1VAigqRDso3ON1S4qK7754yLaKH6dQdietBVLJWwSkZSX3giN5ZDcwZzMgy99kbOpv4n5Y0QJFk9i0oM8MIq4QsvtB-rAG9KHxowrPsXQm0ePo8H3Nz4099BzhqmxbfA1Yq6EWEXjBYR9JU9Uy-F_Enyj-GOZebfqFNCgoNyjM/s500/t%20bhavani%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaB2qsKAZxPQm_XcuGybuBHK1JR5EAygekG8_6AyTEeYlge0iuwRL4YPM8ir-A1RO5jPCznmArihGYXrpQ2itb7X7TcqB_WZCGM9KuQ91ZINcRMuaSRHzmck7ydBLDnbTCTqSpJhIO1291VuEziedUIgsmLkFeJ6z9ICmFChjbuUeTdHty03Ri-R0aJgjF/s500/shiva%20family%202x2%20full%20hd.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwfdlOkGlAlk-6Eov4EcGkhqzzuADpeGWGfugpN-1hxsFavVIoMk5pE5WjU9ANwE_TS0Cn3X3MwA9de4gt2l25pRgen6Lkhbn9Kbqv9T_n9P4tfzimmUE9N8jv_WbMlWvPfcKyBfaiekNwXFS4VKdMvFzhasLqwPuA4dESaSMABC9oM6xOMW1-Vm8rvQi3/s500/sharana%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-o_Fqh2ZbIv7AAIaBIdBHv8XbrGavonB0Jr6fAEqFyyajlwe0YWt5a61JKi9lyVMnCO4c1-_zMSoBTQTDIK2NmpW1VAlxmqUXHxqxQcPaJE7fgHEad4FFmeL5lPVC3jGQXmpoL29fbT_fRvjNFCMs7NwI9Py5LV61uexSjq2QHOGlUh8ee9Df4B9UFwp-/s334/s%20rayanna%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOjdswIGTMZxZTe5e4y8M86PdQxKYwreCzwxN3vf3nbvJc2_7CVXLLeMQyJKRbEQT5PHBZTBy-zS653RhS49NmU2FnO_HDW3AgWz4OTrqz7wxs8BVjpB_lsZS97QIIBuChw2j0oQA-2CODEz8oGcSSYI6TKcJ0tP7DyWjPlJ3V4VPMyNbrOO6LTUgFdW19/s334/r%20s%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTULgeVioiYAonHwY5T6_bMM1GQwZaZDuU7Ux6Gi1f41dnARPlbja245UD4PBZgR2lkGpo-rKg1o4kALxGLBmo1JKuXUF9bky3A26Jay72EoLUP_XjhCBJKDzFeYjd4t8vE1ZpCvdg2aPCLsG0roWBKSJcv-u3EY5tB__UVBQXqgiGLFt1WGk9VsGxLG2f/s500/ml%20new%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioZy1Kdg3GNjhH3yZ5PoxMFs2Rd4O9lh3HcRW9BhuFQL9Qo_xF1i7jsh3CHqbgYMRnsX21F_iuXlmviyLGIzEJpyRP187sKoXrzzHcgQNdwP04kpSYRgLB2nlQTNtV3HkIHw9zibxpRpFXUr-eKxUNoAKk5FMuGv2FfZaCU7VA7S2U1JH8SqUxegQ565RX/s334/jesus%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYmW4Vi7uDmUnT22DKH18vG6rlct3nr2deKjyLIOlYwQn9M3hYTDD7ATWnFSqfXAkTNVvG9gun02U4iq4IsgAxhAG0C1fA6Z-lCbCtcdSsqCN_Htc9UwOqK2xVSEQaScABDUOONCxfMF1pdh4Y15ijqG-dssTLgfDPHKQ5Km0Cj91fTKALWAjMo1oTgumo/s500/devi%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9IQ4syAteI0Vj5PLqErgSC1Rbdr_5CfNgNk7jUYjZOushf9f73Okdxi6eFnTAlkS4SYD1-BBih9ghnuh5C4zjnd8pADVY34swcz8LdBMHGjt6T6BT5ODvvVxGBh6HUwwgPmpJjQEWxJW1KULbSaBlEMbsqgbGjH68iILQ2PdPJFoVq4SCpP8oow9399Bn/s500/datta%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1757862197/display_1500/stock-photo-lord-shiva-with-colorful-background-wallpaper-god-shiv-pariwar-poster-design-for-wallpaper-1757862197.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLCNRkPrvjc86dBCly2YBKkwfRCvCIuB2NihP5m1E1cepVpAr5PdhvsbgcTgCvd06zUvflN-mEyXb3OL-Ofo8sRtI8mNq9rbEg1qpF1RW6Q5jpr2ELpddcg_KXuRTgI3YhgaivsduXq9A5YtKi-stia5TyRKL2URbHGIzotGfS8e1eUaS3yz-juf5Qptpo/s500/c2%2024x24.jpg">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="BAL KRISHANA">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1757751794/display_1500/stock-photo-lord-bal-krishna-with-colorful-background-wallpaper-god-bal-krishna-poster-design-for-wallpaper-1757751794.jpg">
+                <div class="product-description">
+                    <h3>BAL KRISHANA</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="Lord Tirupati BalaJi">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1800288175/display_1500/stock-photo-lord-tirupati-balaji-with-colorful-background-wallpaper-god-tirupati-balaji-poster-design-1800288175.jpg">
+                <div class="product-description">
+                    <h3>Lord Tirupati BalaJi</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="Durga Mata">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1857132805/display_1500/stock-photo-durga-mata-with-colorful-background-digital-wall-poster-1857132805.jpg">
+                <div class="product-description">
+                    <h3>Durga Mata</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="Durga Mata with colorful background">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1857132799/display_1500/stock-photo-durga-mata-with-colorful-background-digital-wall-poster-1857132799.jpg">
+                <div class="product-description">
+                    <h3>Durga Mata with colorful background</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1757757065/display_1500/stock-photo-lord-laxmi-lord-ganesha-lord-saraswati-with-colorful-background-wallpaper-diwali-pooja-poster-1757757065.jpg">
+                <div class="product-description">
+                    <h3>Lord Laxmi, Lord Ganesha, Lord Saraswati</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1757862188/display_1500/stock-photo-lord-shiva-with-colorful-background-wallpaper-god-shiv-pariwar-poster-design-for-wallpaper-1757862188.jpg">
+                <div class="product-description">
+                    <h3>God Shiv Pariwar</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://www.shutterstock.com/shutterstock/photos/1757753504/display_1500/stock-photo-lord-ganesha-with-colorful-background-wallpaper-god-ganesha-poster-design-for-wallpaper-1757753504.jpg">
+                <div class="product-description">
+                    <h3>Lord Ganesha</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+      <div class="product" data-product-name="SHIVA FAMILY">
+                <img src="https://example.com/shiva_family.jpg" alt="Shiva Family">
+                <div class="product-description">
+                    <h3>SHIVA FAMILY</h3>
+                    <p>A serene depiction of Shiva's family in bright tones.</p>
+                    <select class="size-select">
+                        <option value="8x12">8x12</option>
+                        <option value="12x18">12x18</option>
+                        <option value="18x24">18x24</option>
+                        <option value="24x24">24x24</option>
+                        <option value="24x36">24x36</option>
+                        <option value="24x48">24x48</option>
+                    </select>
+                    <p class="product-price">Price: RS.100</p>
+                    <a href="#">Add to Cart</a>
+                </div>
+            </div>
+
+            <!-- Add more products with similar structure -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>Contact us at: vaishnavitilesprint@gmail.com</p>
+        <div class="copyright">
+            <p>&copy; 2024 VAISHNAVI TILES PRINT. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const sizeSelects = document.querySelectorAll('.size-select');
+        sizeSelects.forEach(select => {
+            select.addEventListener('change', () => {
+                const selectedSize = select.value;
+                let price = 0;
+                switch (selectedSize) {
+                    case '8x12':
+                        price = 100;
+                        break;
+                    case '12x18':
+                        price = 180;
+                        break;
+                    case '18x24':
+                        price = 450;
+                        break;
+                    case '24x24':
+                        price = 600;
+                        break;
+                    case '24x36':
+                        price = 900;
+                        break;
+                    case '24x48':
+                        price = 1200;
+                        break;
+                    default:
+                        price = 0;
+                }
+                const productDescription = select.parentElement.querySelector('.product-price');
+                productDescription.textContent = `Price: RS.${price}`;
+            });
+        });
+
+        // Search functionality
+        function searchProduct() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const productName = product.dataset.productName.toLowerCase();
+                if (productName.includes(input)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
